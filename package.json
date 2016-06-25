@@ -23,5 +23,9 @@
   "homepage": "https://github.com/camilin87/global-console-prefix#readme",
   "dependencies": {
     "util": "^0.10.3"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "rfr": "^1.2.3"
   }
 }
