@@ -40,6 +40,18 @@ describe("globalConsolePrefix", function () {
             expect(captured_text).toBe("something\n");
         });
 
+        it ("does not write formatted string if format is not the first arg", function(){
+            console.log("[SAMPLE]", "[%s]", "something");
+
+            expect(captured_text).toBe("[SAMPLE] [%s] something\n");
+        });
+
+        it ("writes formatted string", function(){
+            console.log("[%s]", "something");
+
+            expect(captured_text).toBe("[something]\n");
+        });
+
         it ("writes multiple strings", function(){
             console.log("something", "nothing");
 
@@ -107,6 +119,19 @@ describe("globalConsolePrefix", function () {
 
             expect(captured_text).toBe("[GLOBAL] - something\n");
         });
+
+        it ("does not write formatted string if format is not the first arg", function(){
+            console.log("[SAMPLE]", "[%s]", "something");
+
+            expect(captured_text).toBe("[GLOBAL] - [SAMPLE] [%s] something\n");
+        });
+
+        it ("writes formatted string", function(){
+            console.log("[%s]", "something");
+
+            expect(captured_text).toBe("[GLOBAL] - [something]\n");
+        });
+
 
         it ("writes multiple strings", function(){
             console.log("something", "nothing");

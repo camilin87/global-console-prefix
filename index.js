@@ -5,8 +5,10 @@ module.exports = function(prefix) {
 
     var originalConsoleLog = console.log;
     console.log = function () {
-        var updatedArgs = Array.prototype.slice.call(arguments);
-        updatedArgs.unshift(prefix);
-        originalConsoleLog(util.format.apply(this, updatedArgs));
+        var updatedArgs = [
+            prefix,
+            util.format.apply(this, arguments)
+        ];
+        originalConsoleLog.apply(console, updatedArgs);
     }
 }
