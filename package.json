@@ -1,0 +1,27 @@
+{
+  "name": "global-console-prefix",
+  "version": "0.0.1",
+  "description": "Add a commong prefix to every single console.log message",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camilin87/global-console-prefix.git"
+  },
+  "keywords": [
+    "console",
+    "prefix",
+    "global"
+  ],
+  "author": "@camilin87",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camilin87/global-console-prefix/issues"
+  },
+  "homepage": "https://github.com/camilin87/global-console-prefix#readme",
+  "dependencies": {
+    "util": "^0.10.3"
+  }
+}
