@@ -98,6 +98,70 @@ describe("globalConsolePrefix", function () {
     });
 
     describe("when a prefix is specified", function(){
+        beforeEach(function(){
+            rfr("index")("[GLOBAL] -");
+        })
 
+        it ("writes single string", function(){
+            console.log("something");
+
+            expect(captured_text).toBe("[GLOBAL] - something\n");
+        });
+
+        it ("writes multiple strings", function(){
+            console.log("something", "nothing");
+
+            expect(captured_text).toBe("[GLOBAL] - something nothing\n");
+        });
+
+        it ("writes numbers", function(){
+            console.log(1);
+
+            expect(captured_text).toBe("[GLOBAL] - 1\n");
+        });
+
+        it ("writes multiple numbers", function(){
+            console.log(1, 2, 3);
+
+            expect(captured_text).toBe("[GLOBAL] - 1 2 3\n");
+        });
+
+        it ("writes arrays", function(){
+            console.log([1, 2, 3]);
+
+            expect(captured_text).toBe("[GLOBAL] - [ 1, 2, 3 ]\n");
+        });
+
+        it ("writes objects", function(){
+            console.log({
+                name: "pepe",
+                weight: 12
+            });
+
+            expect(captured_text).toBe("[GLOBAL] - { name: 'pepe', weight: 12 }\n");
+        });
+
+        it ("writes multiple objects", function(){
+            console.log({
+                name: "pepe",
+                weight: 12
+            }, {
+                name: "mom",
+                weight: 1
+            });
+
+            expect(captured_text).toBe(
+                "[GLOBAL] - { name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
+            );
+        });
+
+        it ("writes mixed contents", function(){
+            console.log("age", 34, "presenter", {
+                name: "pepe",
+                weight: 12
+            });
+
+            expect(captured_text).toBe("[GLOBAL] - age 34 presenter { name: 'pepe', weight: 12 }\n");
+        });
     });
 });
