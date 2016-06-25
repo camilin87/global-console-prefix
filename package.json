@@ -1,6 +1,6 @@
 {
   "name": "global-console-prefix",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Add a commong prefix to every single console.log message",
   "main": "index.js",
   "scripts": {
