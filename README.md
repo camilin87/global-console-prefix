@@ -1,4 +1,7 @@
-# global-console-prefix
+# global-console-prefix  
+
+[![Build Status](https://travis-ci.org/camilin87/global-console-prefix.svg?branch=master)](https://travis-ci.org/camilin87/global-console-prefix)  
+
 Add a your own prefix to every single console.log message.
 
 ## Usage  
