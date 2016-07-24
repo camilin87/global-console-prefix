@@ -6,7 +6,7 @@ module.exports = function(prefix) {
     var originalConsoleLog = console.log;
     console.log = function () {
         var updatedArgs = [
-            prefix,
+            "[INFO]" + prefix,
             util.format.apply(this, arguments)
         ];
         originalConsoleLog.apply(console, updatedArgs);
@@ -17,7 +17,7 @@ module.exports = function(prefix) {
     var originalConsoleWarn = console.warn;
     console.warn = function () {
         var updatedArgs = [
-            prefix,
+            "[ERROR]" + prefix,
             util.format.apply(this, arguments)
         ];
         originalConsoleWarn.apply(console, updatedArgs);
