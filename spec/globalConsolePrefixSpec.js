@@ -5,6 +5,9 @@ describe("globalConsolePrefix", function () {
     var originalConsoleInfo = null;
     var originalConsoleWarn = null;
     var originalConsoleError = null;
+    var originalConsoleTrace = null;
+    var originalConsoleTime = null;
+    var originalConsoleTimeEnd = null;
 
     var captured_text = "";
     var intercept = null;
@@ -34,6 +37,9 @@ describe("globalConsolePrefix", function () {
         originalConsoleInfo = console.info;
         originalConsoleWarn = console.warn;
         originalConsoleError = console.error;
+        originalConsoleTrace = console.trace;
+        originalConsoleTime = console.time;
+        originalConsoleTimeEnd = console.timeEnd;
     });
 
     afterEach(function(){
@@ -41,6 +47,9 @@ describe("globalConsolePrefix", function () {
         console.info = originalConsoleInfo;
         console.warn = originalConsoleWarn;
         console.error = originalConsoleError;
+        console.trace = originalConsoleTrace;
+        console.time = originalConsoleTime;
+        console.timeEnd = originalConsoleTimeEnd;
     });
 
     describe("when no prefix is specified", function(){
