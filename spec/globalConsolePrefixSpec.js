@@ -361,43 +361,43 @@ describe("globalConsolePrefix", function () {
             it ("writes single string", function(){
                 console.trace("something");
 
-                expect(captured_text).toContain("something\n");
+                expect(captured_text).toContain("Trace: something\n");
             });
 
             it ("does not write formatted string if format is not the first arg", function(){
                 console.trace("[SAMPLE]", "[%s]", "something");
 
-                expect(captured_text).toContain("[SAMPLE] [%s] something\n");
+                expect(captured_text).toContain("Trace: [SAMPLE] [%s] something\n");
             });
 
             it ("writes formatted string", function(){
                 console.trace("[%s]", "something");
 
-                expect(captured_text).toContain("[something]\n");
+                expect(captured_text).toContain("Trace: [something]\n");
             });
 
             it ("writes multiple strings", function(){
                 console.trace("something", "nothing");
 
-                expect(captured_text).toContain("something nothing\n");
+                expect(captured_text).toContain("Trace: something nothing\n");
             });
 
             it ("writes numbers", function(){
                 console.trace(1);
 
-                expect(captured_text).toContain("1\n");
+                expect(captured_text).toContain("Trace: 1\n");
             });
 
             it ("writes multiple numbers", function(){
                 console.trace(1, 2, 3);
 
-                expect(captured_text).toContain("1 2 3\n");
+                expect(captured_text).toContain("Trace: 1 2 3\n");
             });
 
             it ("writes arrays", function(){
                 console.trace([1, 2, 3]);
 
-                expect(captured_text).toContain("[ 1, 2, 3 ]\n");
+                expect(captured_text).toContain("Trace: [ 1, 2, 3 ]\n");
             });
 
             it ("writes objects", function(){
@@ -406,7 +406,7 @@ describe("globalConsolePrefix", function () {
                     weight: 12
                 });
 
-                expect(captured_text).toContain("{ name: 'pepe', weight: 12 }\n");
+                expect(captured_text).toContain("Trace: { name: 'pepe', weight: 12 }\n");
             });
 
             it ("writes multiple objects", function(){
@@ -419,7 +419,7 @@ describe("globalConsolePrefix", function () {
                 });
 
                 expect(captured_text).toContain(
-                    "{ name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
+                    "Trace: { name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
                 );
             });
 
@@ -429,7 +429,7 @@ describe("globalConsolePrefix", function () {
                     weight: 12
                 });
 
-                expect(captured_text).toContain("age 34 presenter { name: 'pepe', weight: 12 }\n");
+                expect(captured_text).toContain("Trace: age 34 presenter { name: 'pepe', weight: 12 }\n");
             });
         });
     });
@@ -751,44 +751,44 @@ describe("globalConsolePrefix", function () {
             it ("writes single string", function(){
                 console.trace("something");
 
-                expect(captured_text).toContain("[GLOBAL] - something\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: something\n");
             });
 
             it ("does not write formatted string if format is not the first arg", function(){
                 console.trace("[SAMPLE]", "[%s]", "something");
 
-                expect(captured_text).toContain("[GLOBAL] - [SAMPLE] [%s] something\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: [SAMPLE] [%s] something\n");
             });
 
             it ("writes formatted string", function(){
                 console.trace("[%s]", "something");
 
-                expect(captured_text).toContain("[GLOBAL] - [something]\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: [something]\n");
             });
 
 
             it ("writes multiple strings", function(){
                 console.trace("something", "nothing");
 
-                expect(captured_text).toContain("[GLOBAL] - something nothing\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: something nothing\n");
             });
 
             it ("writes numbers", function(){
                 console.trace(1);
 
-                expect(captured_text).toContain("[GLOBAL] - 1\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: 1\n");
             });
 
             it ("writes multiple numbers", function(){
                 console.trace(1, 2, 3);
 
-                expect(captured_text).toContain("[GLOBAL] - 1 2 3\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: 1 2 3\n");
             });
 
             it ("writes arrays", function(){
                 console.trace([1, 2, 3]);
 
-                expect(captured_text).toContain("[GLOBAL] - [ 1, 2, 3 ]\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: [ 1, 2, 3 ]\n");
             });
 
             it ("writes objects", function(){
@@ -797,7 +797,7 @@ describe("globalConsolePrefix", function () {
                     weight: 12
                 });
 
-                expect(captured_text).toContain("[GLOBAL] - { name: 'pepe', weight: 12 }\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: { name: 'pepe', weight: 12 }\n");
             });
 
             it ("writes multiple objects", function(){
@@ -810,7 +810,7 @@ describe("globalConsolePrefix", function () {
                 });
 
                 expect(captured_text).toContain(
-                    "[GLOBAL] - { name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
+                    "[GLOBAL] - Trace: { name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
                 );
             });
 
@@ -820,7 +820,7 @@ describe("globalConsolePrefix", function () {
                     weight: 12
                 });
 
-                expect(captured_text).toContain("[GLOBAL] - age 34 presenter { name: 'pepe', weight: 12 }\n");
+                expect(captured_text).toContain("[GLOBAL] - Trace: age 34 presenter { name: 'pepe', weight: 12 }\n");
             });
         });
     });

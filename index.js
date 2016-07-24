@@ -23,14 +23,4 @@ module.exports = function(prefix) {
         originalConsoleWarn.apply(console, updatedArgs);
     };
     console.error = console.warn;
-
-
-    var originalConsoleTrace = console.trace;
-    console.trace = function () {
-        var updatedArgs = [
-            prefix,
-            util.format.apply(this, arguments)
-        ];
-        originalConsoleTrace.apply(console, updatedArgs);
-    };
 }
