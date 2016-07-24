@@ -109,6 +109,82 @@ describe("globalConsolePrefix", function () {
                 expect(captured_text).toBe("age 34 presenter { name: 'pepe', weight: 12 }\n");
             });
         });
+
+        describe("console.info", function(){
+            it ("writes single string", function(){
+                console.info("something");
+
+                expect(captured_text).toBe("something\n");
+            });
+
+            it ("does not write formatted string if format is not the first arg", function(){
+                console.info("[SAMPLE]", "[%s]", "something");
+
+                expect(captured_text).toBe("[SAMPLE] [%s] something\n");
+            });
+
+            it ("writes formatted string", function(){
+                console.info("[%s]", "something");
+
+                expect(captured_text).toBe("[something]\n");
+            });
+
+            it ("writes multiple strings", function(){
+                console.info("something", "nothing");
+
+                expect(captured_text).toBe("something nothing\n");
+            });
+
+            it ("writes numbers", function(){
+                console.info(1);
+
+                expect(captured_text).toBe("1\n");
+            });
+
+            it ("writes multiple numbers", function(){
+                console.info(1, 2, 3);
+
+                expect(captured_text).toBe("1 2 3\n");
+            });
+
+            it ("writes arrays", function(){
+                console.info([1, 2, 3]);
+
+                expect(captured_text).toBe("[ 1, 2, 3 ]\n");
+            });
+
+            it ("writes objects", function(){
+                console.info({
+                    name: "pepe",
+                    weight: 12
+                });
+
+                expect(captured_text).toBe("{ name: 'pepe', weight: 12 }\n");
+            });
+
+            it ("writes multiple objects", function(){
+                console.info({
+                    name: "pepe",
+                    weight: 12
+                }, {
+                    name: "mom",
+                    weight: 1
+                });
+
+                expect(captured_text).toBe(
+                    "{ name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
+                );
+            });
+
+            it ("writes mixed contents", function(){
+                console.info("age", 34, "presenter", {
+                    name: "pepe",
+                    weight: 12
+                });
+
+                expect(captured_text).toBe("age 34 presenter { name: 'pepe', weight: 12 }\n");
+            });
+        });
     });
 
     describe("when a prefix is specified", function(){
@@ -191,6 +267,83 @@ describe("globalConsolePrefix", function () {
 
                 expect(captured_text).toBe("[GLOBAL] - age 34 presenter { name: 'pepe', weight: 12 }\n");
             });
-        })
+        });
+
+        describe("console.info", function(){
+            it ("writes single string", function(){
+                console.info("something");
+
+                expect(captured_text).toBe("[GLOBAL] - something\n");
+            });
+
+            it ("does not write formatted string if format is not the first arg", function(){
+                console.info("[SAMPLE]", "[%s]", "something");
+
+                expect(captured_text).toBe("[GLOBAL] - [SAMPLE] [%s] something\n");
+            });
+
+            it ("writes formatted string", function(){
+                console.info("[%s]", "something");
+
+                expect(captured_text).toBe("[GLOBAL] - [something]\n");
+            });
+
+
+            it ("writes multiple strings", function(){
+                console.info("something", "nothing");
+
+                expect(captured_text).toBe("[GLOBAL] - something nothing\n");
+            });
+
+            it ("writes numbers", function(){
+                console.info(1);
+
+                expect(captured_text).toBe("[GLOBAL] - 1\n");
+            });
+
+            it ("writes multiple numbers", function(){
+                console.info(1, 2, 3);
+
+                expect(captured_text).toBe("[GLOBAL] - 1 2 3\n");
+            });
+
+            it ("writes arrays", function(){
+                console.info([1, 2, 3]);
+
+                expect(captured_text).toBe("[GLOBAL] - [ 1, 2, 3 ]\n");
+            });
+
+            it ("writes objects", function(){
+                console.info({
+                    name: "pepe",
+                    weight: 12
+                });
+
+                expect(captured_text).toBe("[GLOBAL] - { name: 'pepe', weight: 12 }\n");
+            });
+
+            it ("writes multiple objects", function(){
+                console.info({
+                    name: "pepe",
+                    weight: 12
+                }, {
+                    name: "mom",
+                    weight: 1
+                });
+
+                expect(captured_text).toBe(
+                    "[GLOBAL] - { name: 'pepe', weight: 12 } { name: 'mom', weight: 1 }\n"
+                );
+            });
+
+            it ("writes mixed contents", function(){
+                console.info("age", 34, "presenter", {
+                    name: "pepe",
+                    weight: 12
+                });
+
+                expect(captured_text).toBe("[GLOBAL] - age 34 presenter { name: 'pepe', weight: 12 }\n");
+            });
+        });
     });
 });

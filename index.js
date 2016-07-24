@@ -10,5 +10,7 @@ module.exports = function(prefix) {
             util.format.apply(this, arguments)
         ];
         originalConsoleLog.apply(console, updatedArgs);
-    }
+    };
+
+    console.info = console.log;
 }
