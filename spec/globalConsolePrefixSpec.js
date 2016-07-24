@@ -2,7 +2,10 @@ var rfr = require("rfr");
 
 describe("globalConsolePrefix", function () {
     var originalConsoleLog = null;
+    var originalConsoleInfo = null;
     var originalConsoleWarn = null;
+    var originalConsoleError = null;
+
     var captured_text = "";
     var intercept = null;
     var unhook = null;
@@ -28,12 +31,16 @@ describe("globalConsolePrefix", function () {
     beforeEach(function () {
         captured_text = "";
         originalConsoleLog = console.log;
+        originalConsoleInfo = console.info;
         originalConsoleWarn = console.warn;
+        originalConsoleError = console.error;
     });
 
     afterEach(function(){
         console.log = originalConsoleLog;
+        console.info = originalConsoleInfo;
         console.warn = originalConsoleWarn;
+        console.error = originalConsoleError;
     });
 
     describe("when no prefix is specified", function(){
