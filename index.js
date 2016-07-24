@@ -11,6 +11,15 @@ module.exports = function(prefix) {
         ];
         originalConsoleLog.apply(console, updatedArgs);
     };
-
     console.info = console.log;
+
+
+    var originalConsoleWarn = console.warn;
+    console.warn = function () {
+        var updatedArgs = [
+            prefix,
+            util.format.apply(this, arguments)
+        ];
+        originalConsoleWarn.apply(console, updatedArgs);
+    };
 }
