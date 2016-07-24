@@ -22,4 +22,5 @@ module.exports = function(prefix) {
         ];
         originalConsoleWarn.apply(console, updatedArgs);
     };
+    console.error = console.warn;
 }
